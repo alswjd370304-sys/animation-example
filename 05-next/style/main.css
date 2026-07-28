@@ -33,8 +33,15 @@ header nav > ul {
 }
 header nav > ul > li {padding:0 10px; position:relative;}
 header nav > ul > li > a {}
+/* 마우스에 올렸을때  */
+header nav > ul > li:nth-child(4):hover .sub {
+    opacity: 1;
+    transform: translateY(0);
+}
 header nav > ul > li > .sub {
-    position:absolute; 
+    position:absolute; opacity: 0;
+    transform: translateY(-70px);
+    transition: transform 1s ease, opacity 1s;
 }
 header nav > ul > li > .sub li {width:100px; padding: 10px 0 0;}
 header nav > ul > li > .sub li a {}
