@@ -1,0 +1,9 @@
+@keyframes roctate {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}
+/* 배경이동용 애니네이션 */
+@keyframes bgAni {
+    0% {background-position: 0 0;}
+    100% {background-position: 5000px;}
+}

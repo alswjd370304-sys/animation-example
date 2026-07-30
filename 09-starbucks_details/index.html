@@ -33,25 +33,34 @@
         /* 메뉴내용 */
         .menu_contents {position:relative;}
         .menu_contents .menu {
-            display:flex; justify-content:space-between;
-            position:absolute; left:0; top:0;
+            display:flex; /* a 4개 정렬하는 속성 */ 
+            justify-content:space-between; /* 위 row(수평정렬 기본값)와 s-b */
+            position:absolute; left:0; top:0; /* .menu_contents부모기준(menu*3)) 형제와 겹치는 정렬  */
+            display: none;
         }
+        /* meun1,3 숨김그룹 */
+        .menu_contents .menu1 {display: flex;}
+        .menu_contents .menu2 {} /* menu2 별도로 flex설정으로 보이기 */
+        .menu_contents .menu3 {}
         .menu_contents .menu a {
             margin-right:10px; overflow:hidden; position:relative;
             border-radius:10px; 
         }
-        .menu_contents .menu a:last-child {margin-right:0}
+        .menu_contents .menu a:last-child {margin-right:0;}
         .menu_contents .menu a img {width:100%;}
         /* 커피정보 */
+        .menu_contents .menu a:hover .info {opacity: 1;;}
         .menu_contents .menu .info {
             background:rgba(0,102,51,0.8); /*#006633 == rgb(0,102,051)*/
-            color:#fff;
             width:100%; height:100%; display:block;
             position:absolute; left:0; top:0;
             text-align:center;
+            opacity: 0; transition: opacity 0.4s;
+            /* display: none; */
         }
         .menu_contents .menu .info span:first-child {padding-top:40%;}
         .menu_contents .menu .info span {
+            color:#fff;
             display:block; font-weight: 600;
             line-height:1.5;
         }
@@ -65,9 +74,44 @@
     </style>
     <script>
         window.onload=function(){
-
-            
-
+            /* 1. 콜드블루 클릭하면 콜드블루만 보이기 */
+            /* 2. 에스프레소 클릭하면 에스프레소만 보이기 */
+            /* 3. 프라푸치노클릭하면 프라푸치노 만 보이기 */
+            /* 메뉴변수 */
+            const clodBrewMenu = document.querySelector('.category_menu a:nth-child(1)');
+            const esprossoMenu = document.querySelector('.category_menu a:nth-child(2)');
+            const frappuMenu = document.querySelector('.category_menu a:nth-child(3)');
+            /* 메뉴변수 변수검사 */
+            console.log(clodBrewMenu, esprossoMenu, frappuMenu);
+            /* 커피목록 변수 */
+            const clodBrewContent = document.querySelector('.menu1');
+            const esprossocontent = document.querySelector('.menu2');
+            const frappucontent = document.querySelector('.menu3');
+            /* 커피목록 변수검사 */
+            console.log(clodBrewContent, esprossocontent, frappucontent);
+            //------------------------------함수 
+            //전체숨기기
+            function allHide() {
+                clodBrewContent.style.display = 'none';
+                esprossocontent.style.display = 'none';
+                frappucontent.style.display = 'none';
+            }
+            function clodBrewShow() {
+                allHide();
+                clodBrewContent.style.display = 'flex';
+            }
+            function esprossShow() {
+                allHide()
+                esprossocontent.style.display = 'flex';
+            }
+            function frappuShow() {
+                allHide()
+                frappucontent.style.display = 'flex';
+            }
+            //----------------------------객체.이벤트
+            clodBrewMenu.addEventListener('click',clodBrewShow);
+            esprossoMenu.addEventListener('click',esprossShow);
+            frappuMenu.addEventListener('click', frappuShow);
         }//e:onload
     </script>
 </head>
@@ -85,11 +129,13 @@
             <a href="#">프라푸치노</a>
         </div>
         <div id="menu_title"><!-- javascript --></div>
+        <!-- ----------------------------------------------------콜드블루/에스프레소/프라푸치노 -->
         <div class="menu_contents">
+            <!-- ---------------------------------------------------------콜드블루 -->
             <div class="menu menu1">
                 <a href="#">
                     <img src="images/menu1-1.jpg" alt="">
-                    <span class="info">
+                    <span class="info"> <!-- 배경녹색 -->
                         <span>콜드브루커피</span>
                         <span>50kcal</span>
                     </span>
@@ -98,6 +144,7 @@
                 <a href="#"><img src="images/menu1-3.jpg" alt=""><span class="info"><span>콜드브루커피</span><span>150kcal</span></span></a>
                 <a href="#"><img src="images/menu1-4.jpg" alt=""><span class="info"><span>콜드브루커피</span><span>40kcal</span></span></a>
             </div>
+            <!-- ---------------------------------------------------------에스프레소 -->
             <div class="menu menu2">
                 <a href="#">
                     <img src="images/menu2-1.jpg" alt="">
@@ -110,6 +157,7 @@
                 <a href="#"><img src="images/menu2-3.jpg" alt=""><span class="info"><span>에스프레소</span><span>150kcal</span></span></a>
                 <a href="#"><img src="images/menu2-4.jpg" alt=""><span class="info"><span>에스프레소</span><span>40kcal</span></span></a>
             </div>
+            <!-- ---------------------------------------------------------프라푸치노 -->
             <div class="menu menu3">
                 <a href="#">
                     <img src="images/menu3-1.jpg" alt="">
