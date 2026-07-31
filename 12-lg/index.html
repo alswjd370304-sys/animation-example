@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="reset.css">
     <style>
         body {background:#000;}
-        body * {border:1px solid aqua;}
+        body * {/* border:1px solid aqua; */}
         header {
             padding:20px 0; width:1400px; margin:0 auto;
             display:flex; justify-content:space-between; align-items:center;
@@ -27,7 +27,7 @@
         }
         main .video_bg {
             width:790px; height:640px; position:relative;
-            overflow:hidden; 
+            overflow:hidden; z-index: 40;
         }
         main .video_bg video {
             position:absolute;
@@ -39,9 +39,15 @@
             width:100%;
         }
         main .txt_bg_ani {
-            background:url(images/bg_flow.png) repeat-x left top;
-            height:150px; width:100%;
-            position:absolute; z-index:30;
+            background:url(images/bg_flow.png) repeat-x left center;
+            height:640px; width:100%;
+            position:absolute; z-index:15; /* z-index가 비디오엔 없기 때문에 추가해서 중첩 순서를 정해줌.*/
+            animation: txtBgAni 60s infinite linear;
+        }
+        /* 애니메이션 */
+        @keyframes txtBgAni {
+            0% {background-position:0;}
+            100% {background-position:5000px;}
         }
     </style>
 </head>
@@ -55,8 +61,9 @@
             <div class="video_bg">
                 <video src="video/golden.mp4" autoplay muted loop></video>
                 <img src="images/img_intro.png" alt="">
+                <div class="txt_bg_ani"></div>
+                <!-- 형제로 묶어야 하는 이유: 부모 위치가 있을 때 첫째와 둘째 형제가 겹친 상태로 만들어야 하기 때문임. -->
             </div>
-            <div class="txt_bg_ani"></div>
         </div>
     </main>
 </body>

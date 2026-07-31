@@ -7,14 +7,27 @@
     <link rel="stylesheet" href="../1-0-prospecs/reset.css">
     <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
     <style>
-        body, html {background:#222;}
+    @font-face {
+        font-family: 'PyeongchangPeace';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/PyeongChangPeace-Light.woff2') format('woff2');
+        font-weight: 300;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: 'PyeongchangPeace';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/PyeongChangPeace-Bold.woff2') format('woff2');
+        font-weight: 700;
+        font-display: swap;
+    }
+        body, html {background:#000;}
         main {width:100%; height:100vh; display:flex; flex-flow:column nowrap; justify-content: center; align-items: center;}
         main h1 {
             margin:0 auto; font-weight:700; 
             font-size:5rem; text-align: center;
             background: linear-gradient(to right, #ff00ff, #00ffff, #ff00ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; /* 엣지, 크롬, 오페라, 사파리 등 특정 웹 브라우저의 사용하기 위해 */
+            -webkit-text-fill-color: transparent; /* 브라우저 엔진 도구- 각각 브라우저를 사용하는 사용자가 최신를 안정적으로 볼 수 있도록 지원하는 브라우저엔진 */
             background-clip: text;
             color: transparent;
         }
@@ -23,28 +36,47 @@
             text-shadow:0 0 20px rgba(255,255,255,0.2);
             font-size:10rem; text-align: center; font-weight:700; 
             background: url(https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D) center / cover;
+            /* (위) background:이미지위치/크기; */
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             color: transparent;
         }
-        p {width:30px;}
+        main h3 {
+            font-family:'PyeongchangPeace', 'Pretendard';
+            font-size: 5.313em;
+            font-weight: 700;
+            background: url(https://i.pinimg.com/736x/a1/97/cb/a197cbc3e09f0202c617b44c0e26a696.jpg) center/cover;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            animation: bg-gradient 2s alternate linear infinite, bgAni 70s alternate infinite;
+            
+        }
+        p {width:100px;}
         p img {width:100%;}
-        p:nth-child(1) img {}
+        p img {width:100%;}
         footer {position:fixed; bottom:50px; right:50px;}
         footer img {width:24px;}
         footer img:nth-child(1) {margin-right:10px;}
         @keyframes bg-gradient {
-            0% {}
-            100% {}
+            0% {transform: translate(0);}
+            100% {transform: translateY(-25px);}
+        }
+        @keyframes bgAni {
+            0% {background-position-x: 0;}
+            100% {background-position-x: 10000px;}
         }
     </style>
 </head>
 <body>
     <main>
         <p><img src="./images/arrow.png" alt=""></p>
-        <h1>PORTFOLIO</h1>
-        <h2>PROJECT</h2>
+        <p><img src="https://i.pinimg.com/736x/d0/4e/85/d04e8578703d1160706a54bb0ebaa4da.jpg" alt=""></p>
+        <!-- <h1>PORTFOLIO</h1> --> <!-- 그라디언트 -->
+        <!-- <h2>PROJECT</h2> --> <!-- 이미지 -->
+        <h3>WEB DESIGNER</h3>
         <p><img src="./images/arrow.png" alt=""></p>
     </main>
     <footer>
